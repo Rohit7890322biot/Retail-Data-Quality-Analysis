@@ -1,0 +1,18 @@
+dimension,column,issue,failed_count,total_count,status,expected_rule,recommended_action
+Completeness,order_id,Required value missing,0,12,PASS,Required fields must be populated,Recover from source; do not invent values.
+Completeness,order_date,Required value missing,1,12,FAIL,Required fields must be populated,Recover from source; do not invent values.
+Completeness,customer_segment,Required value missing,0,12,PASS,Required fields must be populated,Recover from source; do not invent values.
+Completeness,city,Required value missing,1,12,FAIL,Required fields must be populated,Recover from source; do not invent values.
+Completeness,category,Required value missing,0,12,PASS,Required fields must be populated,Recover from source; do not invent values.
+Completeness,quantity,Required value missing,0,12,PASS,Required fields must be populated,Recover from source; do not invent values.
+Completeness,unit_price,Required value missing,0,12,PASS,Required fields must be populated,Recover from source; do not invent values.
+Completeness,payment_status,Required value missing,0,12,PASS,Required fields must be populated,Recover from source; do not invent values.
+Completeness,discount_pct,Discount missing,1,12,FAIL,Missing discount needs business justification,Do not assume zero without approval.
+Uniqueness,order_id,Order ID duplicated or missing,2,12,FAIL,Order ID required and unique,Investigate repeated identifiers with the source owner.
+Validity,order_date,"Missing, non-ISO, invalid, or out-of-range date",3,12,FAIL,ISO date from 2025-01-01 through today,Confirm and correct dates from source.
+Validity,quantity,Quantity not a positive whole number,2,12,FAIL,Whole number greater than zero,Correct malformed or non-positive quantities at source.
+Validity,unit_price,"Unit price missing, non-numeric, or negative",0,12,PASS,Non-negative INR amount,Validate against product/pricing source.
+Validity,discount_pct,Discount missing or outside 0–100,2,12,FAIL,Between 0 and 100; missing needs justification,Resolve missing/out-of-range values with business owner.
+Consistency,customer_segment,Segment outside approved values after normalization,0,12,PASS,"Student, Fresher, Professional after normalization",Normalize case/whitespace and investigate unexpected values.
+Consistency,category,Category outside approved values after normalization,0,12,PASS,"Learning Kit, Course Access, Mentor Session",Map only known equivalent values; investigate others.
+Consistency,payment_status,Payment status outside approved values after normalization,0,12,PASS,"Paid, Pending, Failed, Refunded",Normalize case/whitespace and investigate unexpected values.
